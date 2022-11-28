@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://crypto0627.github.io/nft-boneboss",
   "dependencies": {
+    "@nomiclabs/hardhat-etherscan": "^3.1.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -52,6 +53,8 @@
     ]
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@openzeppelin/contracts": "^4.8.0",
     "gh-pages": "^4.0.0",
     "web3": "^1.8.0"
   }

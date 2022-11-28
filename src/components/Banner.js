@@ -11,7 +11,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "BlockChain research", "NFT Contract Developer", "Web3 Developer" ];
+  const toRotate = [ "BlockChain", "NFT Developer", "Web3 Developer" ];
   const period = 2000;
 
   useEffect(() => {
@@ -47,6 +47,10 @@ export const Banner = () => {
     }
   }
 
+  //mint NFT
+  const mint =()=>{
+
+  }
   return (
     <section className="banner" id="home">
       <Container>
@@ -59,7 +63,9 @@ export const Banner = () => {
                     isVisible ? "animate__animated animate__fadeIn" : ""
                   }
                 >
-                  <span className="tagline">Welcome to BoneBoss NFT trickets</span>
+                  <span className="tagline">
+                    Welcome to BoneBoss NFT
+                  </span>
                   <h1>
                     {`Hi! I'm JakeHong`}{" "}
                     <span
@@ -70,11 +76,9 @@ export const Banner = () => {
                       <span className="wrap">{text}</span>
                     </span>
                   </h1>
-                  <p>
-                    骨頭老大演唱會門票NFT
-                  </p>
-                  <button onClick={() => console.log("connect")}>
-                    Let’s Connect <ArrowRightCircle size={25} />
+                  <p>Anya NFT</p>
+                  <button onClick={mint}>
+                    Let’s Mint NFT! <ArrowRightCircle size={25} />
                   </button>
                 </div>
               )}

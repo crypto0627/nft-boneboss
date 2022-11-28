@@ -30,7 +30,7 @@ export const Newsletter = ({ status, message, onValidated }) => {
               <div className="new-email-bx">
                 <input
                   value={account}
-                  type="email"
+                  type="text"
                   onChange={(e) => setAccount(e.target.value)}
                   placeholder="Wallet Address"
                 />

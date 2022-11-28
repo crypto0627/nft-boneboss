@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from '../assets/img/logo.svg';
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
 import navIcon4 from "../assets/img/nav-icon4.svg";
 import navIcon5 from "../assets/img/nav-icon5.svg";
-import { HashLink } from 'react-router-hash-link';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
@@ -15,6 +13,8 @@ export const NavBar = () => {
 
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+
+  const [walletAddress, setWalletAddress] = useState("");
 
   useEffect(() => {
     const onScroll = () => {
@@ -34,6 +34,72 @@ export const NavBar = () => {
     setActiveLink(value);
   }
 
+  useEffect(()=>{
+    getCurrentWalletAddress();
+    addWalletListener();
+  })
+  const getCurrentWalletAddress= async()=>{
+    if (
+      typeof window !== "undefined" &&
+      typeof window.ethereum !== "undefined"
+    ) {
+      try {
+        //Metamask request!
+        const accounts = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+        if(accounts.length>0){
+          setWalletAddress(accounts[0]);
+          console.log("Web3 is Listenning!",accounts[0]);
+        }else{
+          console.log("Connect to MetaMask using the connect button")
+        }
+
+      } catch (err) {
+        console.error(err.message);
+      }
+    } else {
+      //Metamask not be installed
+      console.log("Please install MetaMask!");
+    }
+  }
+
+  
+  const connectWallet = async()=>{
+    if(typeof window !== "undefined" && typeof window.ethereum !== "undefined"){
+      try{
+        //Metamask request!
+        const accounts= await window.ethereum.request({method:"eth_requestAccounts"})
+        setWalletAddress(accounts[0])
+        console.log("connect correct!",accounts[0])
+      }catch(err){
+        console.error(err.message)
+      }
+    } else{
+      //Metamask not be installed
+      console.log("Please install MetaMask!")
+    }
+  }
+
+  const addWalletListener = async ()=>{
+    if (
+      typeof window !== "undefined" &&
+      typeof window.ethereum !== "undefined"
+    ) {
+      try {
+        //Metamask request!
+        window.ethereum.on("accountsChanged",(accounts)=>{
+        setWalletAddress(accounts[0]);
+        console.log("switch account correct!",accounts[0]);
+        })
+      } catch (err) {
+        console.error(err.message);
+      }
+    } else {
+      //Metamask not be installed
+      console.log("Please install MetaMask!");
+    }
+  }
   return (
     <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -103,7 +169,7 @@ export const NavBar = () => {
                   <img src={navIcon3} alt="" />
                 </a>
                 <a
-                  href="https://github.com/jake0627a1"
+                  href="https://github.com/crypto0627"
                   target="_blank"
                   title="GitHub"
                   rel="noreferrer"
@@ -119,11 +185,16 @@ export const NavBar = () => {
                   <img src={navIcon5} alt="" />
                 </a>
               </div>
-              <HashLink to="#connect">
-                <button className="vvd">
-                  <span>Let’s Connect</span>
-                </button>
-              </HashLink>
+              <button className="vvd" onClick={connectWallet}>
+                <span>
+                  {(walletAddress && walletAddress.length > 0)
+                    ? `Connected: ${walletAddress.substring(
+                        0,
+                        6
+                      )}...${walletAddress.substring(38)}`
+                    : "Connect Wallet"}
+                </span>
+              </button>
             </span>
           </Navbar.Collapse>
         </Container>
