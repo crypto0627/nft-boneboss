@@ -14,7 +14,9 @@ export const Footer = () => {
         <Row className="align-items-center">
           <MailchimpForm />
           <Col size={12} sm={6}>
-            <Nav className="LOGO">BoneBoss</Nav>
+            <Nav.Link className="LOGO" href="#home">
+              DJ Bone
+            </Nav.Link>
           </Col>
           <Col size={12} sm={6} className="text-center text-sm-end">
             <div className="social-icon">

@@ -559,9 +559,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background: #FFFFFF;
   border-radius: 55px;
   color: #121212;
-  padding: 85px 125px;
-  margin-bottom: 80px;
-  margin-top: -122px;
+  padding: 70px 110px;
+  margin-bottom: 30px;
+  margin-top: 5px;
 }
 .newsletter-bx h3 {
   font-weight: 700;

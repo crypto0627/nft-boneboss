@@ -76,7 +76,7 @@ export const Banner = () => {
                       <span className="wrap">{text}</span>
                     </span>
                   </h1>
-                  <p>Anya NFT</p>
+                  <p>NightClub NFT</p>
                   <button onClick={mint}>
                     Let’s Mint NFT! <ArrowRightCircle size={25} />
                   </button>
