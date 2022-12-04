@@ -61,7 +61,7 @@ export const NavBar = () => {
       }
     } else {
       //Metamask not be installed
-      console.log("Please install MetaMask!");
+      alert("Please install MetaMask!");
     }
   }
 
@@ -78,7 +78,7 @@ export const NavBar = () => {
       }
     } else{
       //Metamask not be installed
-      console.log("Please install MetaMask!")
+      alert("Please install MetaMask!");
     }
   }
 
@@ -98,7 +98,7 @@ export const NavBar = () => {
       }
     } else {
       //Metamask not be installed
-      console.log("Please install MetaMask!");
+      alert("Please install MetaMask!");
     }
   }
   return (
