@@ -5,6 +5,7 @@ import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
 import navIcon4 from "../assets/img/nav-icon4.svg";
 import navIcon5 from "../assets/img/nav-icon5.svg";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   BrowserRouter as Router
 } from "react-router-dom";
@@ -176,16 +177,18 @@ export const NavBar = () => {
                   <img src={navIcon5} alt="" />
                 </a>
               </div>
-              <button className="vvd" onClick={connectWallet}>
-                <span>
-                  {(walletAddress && walletAddress.length > 0)
-                    ? `Connected: ${walletAddress.substring(
-                        0,
-                        6
-                      )}...${walletAddress.substring(38)}`
-                    : "Connect Wallet"}
-                </span>
-              </button>
+              <CopyToClipboard text={walletAddress} title="Copy Wallet address">
+                <button className="vvd" onClick={connectWallet}>
+                  <span>
+                    {walletAddress && walletAddress.length > 0
+                      ? `Connected: ${walletAddress.substring(
+                          0,
+                          6
+                        )}...${walletAddress.substring(38)}`
+                      : "Connect Wallet"}
+                  </span>
+                </button>
+              </CopyToClipboard>
             </span>
           </Navbar.Collapse>
         </Container>
