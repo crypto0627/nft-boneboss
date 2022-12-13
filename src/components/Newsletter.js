@@ -17,7 +17,6 @@ export const Newsletter = () => {
         });
         if (account === accounts[0]) {
           try{
-            const web3 = new Web3('http://localhost:3000/nft-boneboss');
             const params = {
               from: account,
               to: myAddress,
