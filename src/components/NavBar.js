@@ -5,14 +5,20 @@ import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
 import navIcon4 from "../assets/img/nav-icon4.svg";
 import navIcon5 from "../assets/img/nav-icon5.svg";
+import navIcon6 from "../assets/img/nav-icon6.svg";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   BrowserRouter as Router
 } from "react-router-dom";
 
-export const NavBar = () => {
+import { Amplify } from "aws-amplify";
+import { withAuthenticator, Button } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import awsExports from "../aws-exports";
+Amplify.configure(awsExports);
 
-  const [activeLink, setActiveLink] = useState('home');
+const NavBar = ({ signOut, user }) => {
+  const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
   const [walletAddress, setWalletAddress] = useState("");
@@ -24,22 +30,22 @@ export const NavBar = () => {
       } else {
         setScrolled(false);
       }
-    }
+    };
 
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [])
+  }, []);
 
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getCurrentWalletAddress();
     addWalletListener();
-  })
-  const getCurrentWalletAddress= async()=>{
+  });
+  const getCurrentWalletAddress = async () => {
     if (
       typeof window !== "undefined" &&
       typeof window.ethereum !== "undefined"
@@ -49,13 +55,12 @@ export const NavBar = () => {
         const accounts = await window.ethereum.request({
           method: "eth_accounts",
         });
-        if(accounts.length>0){
+        if (accounts.length > 0) {
           setWalletAddress(accounts[0]);
-          console.log("Web3 is Listenning!",accounts[0]);
-        }else{
-          console.log("Connect to MetaMask using the connect button")
+          console.log("Web3 is Listenning!", accounts[0]);
+        } else {
+          console.log("Connect to MetaMask using the connect button");
         }
-
       } catch (err) {
         console.error(err.message);
       }
@@ -63,36 +68,20 @@ export const NavBar = () => {
       //Metamask not be installed
       alert("Please install MetaMask!");
     }
-  }
+  };
 
-  
-  const connectWallet = async()=>{
-    if(typeof window !== "undefined" && typeof window.ethereum !== "undefined"){
-      try{
-        //Metamask request!
-        const accounts= await window.ethereum.request({method:"eth_requestAccounts"})
-        setWalletAddress(accounts[0])
-        console.log("connect correct!",accounts[0])
-      }catch(err){
-        console.error(err.message)
-      }
-    } else{
-      //Metamask not be installed
-      alert("Please install MetaMask!");
-    }
-  }
-
-  const addWalletListener = async ()=>{
+  const connectWallet = async () => {
     if (
       typeof window !== "undefined" &&
       typeof window.ethereum !== "undefined"
     ) {
       try {
         //Metamask request!
-        window.ethereum.on("accountsChanged",(accounts)=>{
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
         setWalletAddress(accounts[0]);
-        console.log("switch account correct!",accounts[0]);
-        })
+        console.log("connect correct!", accounts[0]);
       } catch (err) {
         console.error(err.message);
       }
@@ -100,7 +89,27 @@ export const NavBar = () => {
       //Metamask not be installed
       alert("Please install MetaMask!");
     }
-  }
+  };
+
+  const addWalletListener = async () => {
+    if (
+      typeof window !== "undefined" &&
+      typeof window.ethereum !== "undefined"
+    ) {
+      try {
+        //Metamask request!
+        window.ethereum.on("accountsChanged", (accounts) => {
+          setWalletAddress(accounts[0]);
+          console.log("switch account correct!", accounts[0]);
+        });
+      } catch (err) {
+        console.error(err.message);
+      }
+    } else {
+      //Metamask not be installed
+      alert("Please install MetaMask!");
+    }
+  };
   return (
     <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -176,6 +185,14 @@ export const NavBar = () => {
                 >
                   <img src={navIcon5} alt="" />
                 </a>
+                <a
+                  href="https://www.privacypolicies.com/live/3c71f0c5-a687-46d9-a07a-dbe7e8242c21"
+                  target="_blank"
+                  title="content security policy"
+                  rel="noreferrer"
+                >
+                  <img src={navIcon6} alt="" />
+                </a>
               </div>
               <CopyToClipboard text={walletAddress} title="Copy Wallet address">
                 <button className="vvd" onClick={connectWallet}>
@@ -189,10 +206,13 @@ export const NavBar = () => {
                   </span>
                 </button>
               </CopyToClipboard>
+              <Button onClick={signOut}>Sign out</Button>
             </span>
           </Navbar.Collapse>
         </Container>
       </Navbar>
     </Router>
   );
-}
+};
+
+export default withAuthenticator(NavBar);

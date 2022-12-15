@@ -6,7 +6,7 @@ import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
 import navIcon4 from "../assets/img/nav-icon4.svg";
 import navIcon5 from "../assets/img/nav-icon5.svg";
-
+import navIcon6 from "../assets/img/nav-icon6.svg";
 export const Footer = () => {
   return (
     <footer className="footer">
@@ -60,6 +60,12 @@ export const Footer = () => {
               >
                 <img src={navIcon5} alt="" />
               </a>
+              <a href="https://www.privacypolicies.com/live/3c71f0c5-a687-46d9-a07a-dbe7e8242c21"
+                target="_blank"
+                title="content security policy"
+                rel="noreferrer">
+                  <img src={navIcon6} alt="" />
+                </a>
             </div>
             <p>BoneBoss 2022. Crypto NFT </p>
           </Col>

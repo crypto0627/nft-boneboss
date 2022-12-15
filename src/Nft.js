@@ -1,14 +1,11 @@
-/* src/App.js */
-import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import  NavBar  from "./components/NavBar";
+import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
 import { Projects } from "./components/Projects";
 import { Footer } from "./components/Footer";
 
-const App = () => {
-
+function Nft() {
   return (
     <div className="App">
       <NavBar />
@@ -16,10 +13,7 @@ const App = () => {
       <Projects />
       <Footer />
     </div>
-
   );
-};
+}
 
-
-
-export default App;
+export default Nft;
