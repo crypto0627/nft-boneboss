@@ -11,13 +11,8 @@ import {
   BrowserRouter as Router
 } from "react-router-dom";
 
-import { Amplify } from "aws-amplify";
-import { withAuthenticator, Button } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
-import awsExports from "../aws-exports";
-Amplify.configure(awsExports);
 
-const NavBar = ({ signOut, user }) => {
+const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
@@ -206,7 +201,6 @@ const NavBar = ({ signOut, user }) => {
                   </span>
                 </button>
               </CopyToClipboard>
-              <Button onClick={signOut}>Sign out</Button>
             </span>
           </Navbar.Collapse>
         </Container>
@@ -215,4 +209,4 @@ const NavBar = ({ signOut, user }) => {
   );
 };
 
-export default withAuthenticator(NavBar);
+export default NavBar;
