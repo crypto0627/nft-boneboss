@@ -1,13 +1,28 @@
-# Sample Hardhat Project
+# NFT trickets project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
+In this project,you need to install Node.js,and have a AWS account,Metamask.
+Your Metamask wallet must have mumbaifaucet.\
+Download the project from my github and Establish the amplify part:
 
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+npm install
+npm install -g @aws-aplify/cli
+amplify configure
+amplify init
+amplify add api
+amplify add auth
+amplify push
+amplify add hosting
+amplify pulish
 ```
+Deploy the smart contract online and copy your contract abi and address to Front-end.\
+Test the project:
+```
+npm start
+```
+If the project can working normally,pulish the project on amplify.
+```
+amplify pulish
+```
+Finally,you can see web3.0 on the screen!
+
