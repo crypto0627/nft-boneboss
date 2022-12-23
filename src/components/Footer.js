@@ -53,19 +53,21 @@ export const Footer = () => {
                 <img src={navIcon4} alt="" />
               </a>
               <a
-                href="https://opensea.io/"
+                href="https://testnets.opensea.io/"
                 target="_blank"
                 title="Opensea"
                 rel="noreferrer"
               >
                 <img src={navIcon5} alt="" />
               </a>
-              <a href="https://www.privacypolicies.com/live/3c71f0c5-a687-46d9-a07a-dbe7e8242c21"
+              <a
+                href="https://www.privacypolicies.com/live/3c71f0c5-a687-46d9-a07a-dbe7e8242c21"
                 target="_blank"
                 title="content security policy"
-                rel="noreferrer">
-                  <img src={navIcon6} alt="" />
-                </a>
+                rel="noreferrer"
+              >
+                <img src={navIcon6} alt="" />
+              </a>
             </div>
             <p>BoneBoss 2022. Crypto NFT </p>
           </Col>

@@ -4,6 +4,7 @@ import headerImg from "../assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import abi from "../abi/abi.json";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -50,8 +51,29 @@ export const Banner = () => {
     
 
   //mint NFT
-  const mint =()=>{
+  const mint = async()=>{
 
+    
+    if (window.ethereum.isConnected()){
+      //Metamask request!
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts",
+      });
+      try{
+        console.log(abi)
+        const contract = new window.ethereum.eth.Contract(
+          abi,
+          "0x390eCA8D8572c2a48D8B2D8c90E0D1cA9E29Bf5D"
+        );
+        contract.methods.mint()
+        // Mint nft
+      }catch(err){
+        console.log(err.message)
+      }
+    }else{
+      console.log("Please connect Metamask!")
+    }
+    
   }
   return (
     <section className="banner" id="home">

@@ -1,0 +1,27 @@
+{
+    "description": "BoneBoss NightClub NFT trickets", 
+    "external_url": "https://openseacreatures.io/3", 
+    "image": "https://gateway.pinata.cloud/ipfs/QmXkZKkco9VLsQfqQWHBrwHRY2iSezUsxGx88fGBmF8qZ7/NightClub3.png", 
+    "name": "bb3",
+    "attributes": [     {
+        "trait_type": "Date", 
+        "value": "2022/12/15"
+      }, 
+      {
+        "trait_type": "DJ", 
+        "value": "Bone"
+      }, 
+      {
+        "trait_type": "MC", 
+        "value": "Hong"
+      }, 
+      {
+        "trait_type": "Sound", 
+        "value": "Wei"
+      },
+      {
+        "trait_type": "Place", 
+        "value": "Taipei HongClub"
+      }
+    ]
+  }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
@@ -7,12 +7,15 @@ import navIcon4 from "../assets/img/nav-icon4.svg";
 import navIcon5 from "../assets/img/nav-icon5.svg";
 import navIcon6 from "../assets/img/nav-icon6.svg";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import {
-  BrowserRouter as Router
-} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 
+import { Amplify } from "aws-amplify";
+import { withAuthenticator, Button } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import awsExports from "../aws-exports";
+Amplify.configure(awsExports);
 
-const NavBar = () => {
+const NavBar = ({signOut}) => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
@@ -60,8 +63,7 @@ const NavBar = () => {
         console.error(err.message);
       }
     } else {
-      //Metamask not be installed
-      alert("Please install MetaMask!");
+      console.log("Please install metamask!");
     }
   };
 
@@ -101,8 +103,6 @@ const NavBar = () => {
         console.error(err.message);
       }
     } else {
-      //Metamask not be installed
-      alert("Please install MetaMask!");
     }
   };
   return (
@@ -173,7 +173,7 @@ const NavBar = () => {
                   <img src={navIcon4} alt="" />
                 </a>
                 <a
-                  href="https://opensea.io/"
+                  href="https://testnets.opensea.io/"
                   target="_blank"
                   title="Opensea"
                   rel="noreferrer"
@@ -201,6 +201,7 @@ const NavBar = () => {
                   </span>
                 </button>
               </CopyToClipboard>
+              <Button onClick={signOut}>Signout</Button>
             </span>
           </Navbar.Collapse>
         </Container>
@@ -209,4 +210,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default withAuthenticator(NavBar);
