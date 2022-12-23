@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 #amplify-do-not-edit-begin
-amplify
+/amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
 amplify/logs
@@ -78,5 +78,4 @@ hardhat.config.js
 package-lock.json
 
 /src/graphql
-/src/aws-exports.js
 
