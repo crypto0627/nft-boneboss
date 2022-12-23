@@ -25,4 +25,4 @@ If the project can working normally,pulish the project on amplify.
 amplify pulish
 ```
 Finally,you can see web3.0 on the screen!
-
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/1.png)
