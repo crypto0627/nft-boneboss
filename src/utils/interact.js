@@ -1,18 +1,41 @@
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import contractABI from "./abi.json";
+import { useState } from "react";
 
 const web3 = createAlchemyWeb3(
   "https://polygon-mumbai.g.alchemy.com/v2/xYH7CcRbAbWqETLkpqxIaa_WQfryrDIM"
 );
-const contractAddress = "0x390eCA8D8572c2a48D8B2D8c90E0D1cA9E29Bf5D";
+const contractAddress = "0x6f97829D617776d0D8469467E6a3e56D0d4a02DE";
 
-export const verifyNFT = async()=>{
+//verify
+export const verifyNFT = async(tokenId)=>{
+  if (tokenId < 0 || tokenId >= 5000) {
+    return {
+      success: false,
+      status: "❗Please make sure all fields are completed before minting.",
+    };
+  }
+
+  //load smart contract
+  window.contract = await new web3.eth.Contract(contractABI, contractAddress); //loadContract();
+  try{
+    const owner = await window.contract.methods.ownerOf(tokenId).call().then(console.log);
+    return owner
+  }catch(err){
+    return {
+      success: false,
+      status: "😥 Something went wrong: " + err.message,
+    };
+  }
   
+
+ 
 }
 
+
+//mint
 export const mintNFT = async (count) => {
-  //error handling
-  if (count!==1) {
+  if (count !== 1) {
     return {
       success: false,
       status: "❗Please make sure all fields are completed before minting.",
@@ -51,6 +74,8 @@ export const mintNFT = async (count) => {
   }
 };
 
+
+//connect
 export const connectWallet = async () => {
   if (window.ethereum) {
     try {
@@ -91,6 +116,8 @@ export const connectWallet = async () => {
   }
 };
 
+
+//getcurrentwallet
 export const getCurrentWalletConnected = async () => {
   if (window.ethereum) {
     try {

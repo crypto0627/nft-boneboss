@@ -5,11 +5,6 @@
         "internalType": "string",
         "name": "customBaseURI_",
         "type": "string"
-      },
-      {
-        "internalType": "address",
-        "name": "proxyRegistryAddress_",
-        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -335,7 +330,7 @@
       },
       {
         "internalType": "bytes",
-        "name": "_data",
+        "name": "data",
         "type": "bytes"
       }
     ],
