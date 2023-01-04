@@ -277,8 +277,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: #fff;
   font-weight: 700;
   font-size: 20px;
-  margin-top: 60px;
-  letter-spacing: 0.8px;
+  margin-top: 40px;
+  letter-spacing: 1.5px;
   display: flex;
   align-items: center;
 }

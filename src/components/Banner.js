@@ -4,13 +4,14 @@ import headerImg from "../assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import abi from "../abi/abi.json";
+import { mintNFT, verifyNFT } from "../utils/interact.js";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] =useState(""); 
   const [delta, setDelta] = useState(300 - Math.random() * 100);
+  // eslint-disable-next-line no-unused-vars
   const [index, setIndex] = useState(1);
   const toRotate = [ "BlockChain", "NFT Developer", "Web3 Developer" ];
   const period = 2000;
@@ -48,33 +49,25 @@ export const Banner = () => {
       setIndex(prevIndex => prevIndex + 1);
     }
   }
-    
 
-  //mint NFT
-  const mint = async()=>{
+//mintNFT
+const [count, setcount] = useState("");
+const [status, setStatus] = useState("");
+const onMint= async () => {
+  setcount(1)
+  const {status}=await mintNFT(count);
+  setStatus(status);
+  console.log(status)
+};
 
-    
-    if (window.ethereum.isConnected()){
-      //Metamask request!
-      const accounts = await window.ethereum.request({
-        method: "eth_accounts",
-      });
-      try{
-        console.log(abi)
-        const contract = new window.ethereum.eth.Contract(
-          abi,
-          "0x390eCA8D8572c2a48D8B2D8c90E0D1cA9E29Bf5D"
-        );
-        contract.methods.mint()
-        // Mint nft
-      }catch(err){
-        console.log(err.message)
-      }
-    }else{
-      console.log("Please connect Metamask!")
-    }
-    
-  }
+//verifyNFT
+const [tokenId,setTokenId]=useState("")
+const onVerify= async()=>{
+  setTokenId()
+  const {status}=await verifyNFT()
+  setStatus(status)
+  console.log(status)
+}
   return (
     <section className="banner" id="home">
       <Container>
@@ -87,23 +80,21 @@ export const Banner = () => {
                     isVisible ? "animate__animated animate__fadeIn" : ""
                   }
                 >
-                  <span className="tagline">
-                    Welcome to BoneBoss NFT
-                  </span>
-                  <h1>
-                    {`Hi! I'm JakeHong`}{" "}
-                    <span
-                      className="txt-rotate"
-                      dataPeriod="1000"
-                      data-rotate='[ "BlockChain research", "NFT Contract Depoly", "Web3 Developer" ]'
-                    >
-                      <span className="wrap">{text}</span>
-                    </span>
-                  </h1>
+                  <span className="tagline">Welcome to BoneBoss NFT</span>
+                  <h1>{`Hi! I'm JakeHong`}</h1>
                   <p>NightClub NFT</p>
-                  <button onClick={mint}>
+                  <button onClick={onMint}>
                     Let’s Mint NFT! <ArrowRightCircle size={25} />
                   </button>
+
+                  <button onClick={onVerify}>
+                    Verify NFT Tricket <ArrowRightCircle size={25} />
+                  </button>
+                  <input
+                    type="text"
+                    placeholder="write your tokenId"
+                    id="verifytext"
+                  />
                 </div>
               )}
             </TrackVisibility>

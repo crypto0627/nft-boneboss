@@ -124,6 +124,8 @@ contract boneboss is ERC721, ReentrancyGuard, Ownable {
 
     return super.isApprovedForAll(owner, operator);
   }
+  
+  function verifyState()
 }
 
 // Contract created with Studio 721 v1.5.0

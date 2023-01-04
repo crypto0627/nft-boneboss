@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
@@ -6,30 +6,34 @@ import navIcon3 from '../assets/img/nav-icon3.svg';
 import navIcon4 from "../assets/img/nav-icon4.svg";
 import navIcon5 from "../assets/img/nav-icon5.svg";
 import navIcon6 from "../assets/img/nav-icon6.svg";
+import { connectWallet, getCurrentWalletConnected } from "../utils/interact";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import {BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import { Amplify } from "aws-amplify";
-import { withAuthenticator, Button } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
-import awsExports from "../aws-exports";
-Amplify.configure(awsExports);
-
-const NavBar = ({signOut}) => {
-  const [activeLink, setActiveLink] = useState("home");
-  const [scrolled, setScrolled] = useState(false);
-
-  const [walletAddress, setWalletAddress] = useState("");
+const NavBar = ({ signOut }) => {
+  //Navbar list
+  const [activeLink, setActiveLink] = useState("home")
+  const [scrolled, setScrolled] = useState(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    const onScroll = () => {
+    //Navbar scroll
+    function onScroll() {
       if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
-    };
-
+    }
+    //walletAddressListener is used switch address 
+    async function walletListener() {
+      //TODO: implement
+      const { address, status } = await getCurrentWalletConnected();
+      setWallet(address);
+      setStatus(status);
+      addWalletListener();
+    }
+    walletListener();
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
@@ -39,71 +43,47 @@ const NavBar = ({signOut}) => {
     setActiveLink(value);
   };
 
-  useEffect(() => {
-    getCurrentWalletAddress();
-    addWalletListener();
-  });
-  const getCurrentWalletAddress = async () => {
-    if (
-      typeof window !== "undefined" &&
-      typeof window.ethereum !== "undefined"
-    ) {
-      try {
-        //Metamask request!
-        const accounts = await window.ethereum.request({
-          method: "eth_accounts",
-        });
+  //Wallet
+  const [walletAddress, setWallet] = useState("");
+  const [status, setStatus] = useState("");
+
+  function addWalletListener() {
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts) => {
         if (accounts.length > 0) {
-          setWalletAddress(accounts[0]);
-          console.log("Web3 is Listenning!", accounts[0]);
+          setWallet(accounts[0]);
+          setStatus("The web3 is connected!");
         } else {
-          console.log("Connect to MetaMask using the connect button");
+          setWallet("");
+          setStatus("🦊 Connect to Metamask using the top right button.");
         }
-      } catch (err) {
-        console.error(err.message);
-      }
+      });
     } else {
-      console.log("Please install metamask!");
+      setStatus(
+        <p>
+          {" "}
+          🦊{" "}
+          <a
+            target="_blank"
+            href={`https://metamask.io/download.html`}
+            rel="noreferrer"
+          >
+            You must install Metamask, a virtual Ethereum wallet, in your
+            browser.
+          </a>
+        </p>
+      );
     }
-  };
+  }
 
-  const connectWallet = async () => {
-    if (
-      typeof window !== "undefined" &&
-      typeof window.ethereum !== "undefined"
-    ) {
-      try {
-        //Metamask request!
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setWalletAddress(accounts[0]);
-        console.log("connect correct!", accounts[0]);
-      } catch (err) {
-        console.error(err.message);
-      }
-    } else {
-      //Metamask not be installed
-      alert("Please install MetaMask!");
-    }
-  };
 
-  const addWalletListener = async () => {
-    if (
-      typeof window !== "undefined" &&
-      typeof window.ethereum !== "undefined"
-    ) {
-      try {
-        //Metamask request!
-        window.ethereum.on("accountsChanged", (accounts) => {
-          setWalletAddress(accounts[0]);
-          console.log("switch account correct!", accounts[0]);
-        });
-      } catch (err) {
-        console.error(err.message);
-      }
-    } else {
-    }
+
+  const connectWalletPressed = async () => {
+    //TODO: implement
+    const walletResponse = await connectWallet();
+    setStatus(walletResponse.status);
+    setWallet(walletResponse.address);
+    console.log(status)
   };
   return (
     <Router>
@@ -190,7 +170,7 @@ const NavBar = ({signOut}) => {
                 </a>
               </div>
               <CopyToClipboard text={walletAddress} title="Copy Wallet address">
-                <button className="vvd" onClick={connectWallet}>
+                <button className="vvd" onClick={connectWalletPressed}>
                   <span>
                     {walletAddress && walletAddress.length > 0
                       ? `Connected: ${walletAddress.substring(
@@ -201,7 +181,6 @@ const NavBar = ({signOut}) => {
                   </span>
                 </button>
               </CopyToClipboard>
-              <Button onClick={signOut}>Signout</Button>
             </span>
           </Navbar.Collapse>
         </Container>
@@ -210,4 +189,4 @@ const NavBar = ({signOut}) => {
   );
 };
 
-export default withAuthenticator(NavBar);
+export default NavBar;
