@@ -58,6 +58,7 @@ const onMint= async () => {
   const {status}=await mintNFT(count);
   setStatus(status);
   console.log(status)
+  alert(status);
 };
 
 //verifyNFT
@@ -67,6 +68,7 @@ const onVerify= async()=>{
   const {status}=await verifyNFT()
   setStatus(status)
   console.log(status)
+  
 }
   return (
     <section className="banner" id="home">
