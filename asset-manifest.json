@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/nft-boneboss/static/css/main.061d7a77.css",
+    "main.js": "/nft-boneboss/static/js/main.fead2b9c.js",
+    "static/media/banner-bg2.png": "/nft-boneboss/static/media/banner-bg2.434ffabe120d747fcc86.png",
+    "static/media/NightClub.png": "/nft-boneboss/static/media/NightClub.e8c04f3db8066a95bd93.png",
+    "static/media/NightClub2.png": "/nft-boneboss/static/media/NightClub2.ba5b2ee5e00275874c1e.png",
+    "static/media/NightClub3.png": "/nft-boneboss/static/media/NightClub3.542b879e7463d543a2d1.png",
+    "static/media/color-sharp2.png": "/nft-boneboss/static/media/color-sharp2.c87586c6c2f549cb4aa6.png",
+    "static/media/header-img.svg": "/nft-boneboss/static/media/header-img.84bf93eb20488a753440bf83d27db7bb.svg",
+    "static/media/CentraNo2-Bold.ttf": "/nft-boneboss/static/media/CentraNo2-Bold.2faff7f7d3fc92a2fcd9.ttf",
+    "static/media/CentraNo2-Medium.ttf": "/nft-boneboss/static/media/CentraNo2-Medium.f94be5b326d78bb32b95.ttf",
+    "static/media/CentraNo2-Book.ttf": "/nft-boneboss/static/media/CentraNo2-Book.2b143fa4b734a3584043.ttf",
+    "static/media/footer-bg.png": "/nft-boneboss/static/media/footer-bg.7bd67c0f73571d0acc02.png",
+    "static/media/nav-icon5.svg": "/nft-boneboss/static/media/nav-icon5.1f5996d837c8e0253830785a0d3c70de.svg",
+    "static/media/nav-icon4.svg": "/nft-boneboss/static/media/nav-icon4.7688d7ca526f325051b47a95a06e7cfd.svg",
+    "static/media/nav-icon6.svg": "/nft-boneboss/static/media/nav-icon6.ad671596bb90b54781e8d5109bfba23a.svg",
+    "static/media/nav-icon3.svg": "/nft-boneboss/static/media/nav-icon3.08b285abb8e118b52637efa5d65c5367.svg",
+    "static/media/nav-icon2.svg": "/nft-boneboss/static/media/nav-icon2.12634321b98fb0248357c3aab640c2bf.svg",
+    "index.html": "/nft-boneboss/index.html",
+    "static/media/nav-icon1.svg": "/nft-boneboss/static/media/nav-icon1.721d5414c26365f117e71d46b6641cb2.svg",
+    "main.061d7a77.css.map": "/nft-boneboss/static/css/main.061d7a77.css.map",
+    "main.fead2b9c.js.map": "/nft-boneboss/static/js/main.fead2b9c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.061d7a77.css",
+    "static/js/main.fead2b9c.js"
+  ]
+}
