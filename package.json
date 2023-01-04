@@ -2,6 +2,7 @@
     "name": "personal-portfolio",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://crypto0627.github.io/nft-boneboss/",
     "dependencies": {
         "@alch/alchemy-web3": "^1.4.7",
         "@openzeppelin/contracts": "^4.8.0",
@@ -15,6 +16,7 @@
         "bootstrap": "^5.2.0-beta1",
         "cors": "^2.8.5",
         "dotenv": "^16.0.3",
+        "gh-pages": "^4.0.0",
         "nodemailer": "^6.7.5",
         "react": "^18.1.0",
         "react-bootstrap": "^2.4.0",
@@ -37,8 +39,8 @@
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
         "eject": "react-scripts eject",
-        "amplify-modelgen": "node amplify\\scripts\\amplify-modelgen.js",
-        "amplify-push": "node amplify\\scripts\\amplify-push.js"
+        "predeploy": "npm run build", 
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
