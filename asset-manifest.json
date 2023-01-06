@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nft-boneboss/static/css/main.ee85b1b8.css",
-    "main.js": "/nft-boneboss/static/js/main.29aae1fb.js",
+    "main.js": "/nft-boneboss/static/js/main.7548ab58.js",
     "static/media/banner-bg2.png": "/nft-boneboss/static/media/banner-bg2.434ffabe120d747fcc86.png",
     "static/media/NightClub.png": "/nft-boneboss/static/media/NightClub.e8c04f3db8066a95bd93.png",
     "static/media/NightClub2.png": "/nft-boneboss/static/media/NightClub2.ba5b2ee5e00275874c1e.png",
@@ -20,10 +20,10 @@
     "index.html": "/nft-boneboss/index.html",
     "static/media/nav-icon1.svg": "/nft-boneboss/static/media/nav-icon1.721d5414c26365f117e71d46b6641cb2.svg",
     "main.ee85b1b8.css.map": "/nft-boneboss/static/css/main.ee85b1b8.css.map",
-    "main.29aae1fb.js.map": "/nft-boneboss/static/js/main.29aae1fb.js.map"
+    "main.7548ab58.js.map": "/nft-boneboss/static/js/main.7548ab58.js.map"
   },
   "entrypoints": [
     "static/css/main.ee85b1b8.css",
-    "static/js/main.29aae1fb.js"
+    "static/js/main.7548ab58.js"
   ]
 }
