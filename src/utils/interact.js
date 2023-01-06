@@ -7,9 +7,40 @@ const web3 = createAlchemyWeb3(
 );
 const contractAddress = "0xB8ea8d146b880EEcd440477ecD83a1DD93F66b78";
 
-//call nftused function return(address)
+//call tokenURI 
+export const tokenURI = async(tokenId)=>{
+  if (tokenId < 0 || tokenId >= 100) {
+    return {
+      success: false,
+      status: "❗Please make sure all fields are completed before minting.",
+    };
+  }
+
+  //load smart contract
+  window.contract = await new web3.eth.Contract(contractABI, contractAddress); //loadContract();
+  try{
+    const used = await window.contract.methods
+      .tokenURI(tokenId)
+      .call({ from: window.ethereum.selectedAddress });
+    return {
+      success: true,
+      status: "✅ NFT圖片地址為:" + used,
+    };
+  } catch(err){
+    return {
+      success: false,
+      status:
+        "😥 Something went wrong: " +
+        err.message +
+        "Please input tokenId in a textbox.",
+    };
+  }
+  
+}
+
+//call nftused 
 export const nftused = async(tokenId)=>{
-  if (tokenId < 0 || tokenId >= 10000) {
+  if (tokenId < 0 || tokenId >= 100) {
     return {
       success: false,
       status: "❗Please make sure all fields are completed before minting.",
@@ -29,15 +60,18 @@ export const nftused = async(tokenId)=>{
   } catch(err){
     return {
       success: false,
-      status: "😥 Something went wrong: " + err.message,
+      status:
+        "😥 Something went wrong: " +
+        err.message +
+        "Please input tokenId in a textbox.",
     };
   }
   
 }
 
-//update count=10
+//verify nft
 export const verifyNFT = async(tokenId)=>{
-  if (tokenId < 0 || tokenId >= 10000) {
+  if (tokenId < 0 || tokenId >= 100) {
     return {
       success: false,
       status: "❗Please make sure all fields are completed before minting.",
@@ -67,7 +101,10 @@ export const verifyNFT = async(tokenId)=>{
   } catch (err) {
     return {
       success: false,
-      status: "😥 Something went wrong: " + err.message,
+      status:
+        "😥 Something went wrong: " +
+        err.message +
+        "Please input tokenId in a textbox.",
     };
   }
 }

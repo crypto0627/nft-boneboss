@@ -293,7 +293,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .banner input {
   color:#121212;
-  font-size: 500;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 55px;
+  padding: 10px 50px;
+  margin-bottom: -50px;
+  margin-top: 50px;
 }
 .banner img {
   animation: updown 3s linear infinite;

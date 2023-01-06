@@ -1,13 +1,5 @@
-# Sample Hardhat Project
+# Polygon NFT Trickets Project.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+功能介紹:
+你可以在專案網頁連結錢包、Mint NFT、查詢NFT可驗證的次數、驗證NFT、捐款
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```

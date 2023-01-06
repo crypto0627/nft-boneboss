@@ -4,7 +4,7 @@ import headerImg from "../assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import { mintNFT, verifyNFT, nftused } from "../utils/interact.js";
+import { mintNFT, verifyNFT, nftused, tokenURI } from "../utils/interact.js";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -80,16 +80,28 @@ export const Banner = () => {
   //nftused return(address)
   const OwnerOfcall = async()=>{
     setTokenId(inputRef.current.value);
-    if(tokenId<0||tokenId>100){
-      console.log("Please input tokenId for the range 0~99.")
-      alert("Please input tokenId for the range 0~99.")
-    }else{
+    if (tokenId < 0 || tokenId > 100) {
+      console.log("Please input tokenId for the range 0~99.");
+      alert("Please input tokenId for the range 0~99.");
+    } else {
       const { status } = await nftused(tokenId);
       console.log(status);
       alert(status);
     }
-
   }
+  //tokenURI
+  const tokenURICall = async()=>{
+    setTokenId(inputRef.current.value);
+    if (tokenId < 0 || tokenId > 100) {
+      console.log("Please input tokenId for the range 0~99.");
+      alert("Please input tokenId for the range 0~99.");
+    } else {
+      const { status } = await tokenURI(tokenId);
+      console.log(status);
+      alert(status);
+    }
+  }
+
   return (
     <section className="banner" id="home">
       <Container>
@@ -108,18 +120,22 @@ export const Banner = () => {
                   <button onClick={onMint}>
                     Let’s Mint NFT! <ArrowRightCircle size={25} />
                   </button>
-                  <button onClick={OwnerOfcall}>
-                    Watch what the times your token can be used.
-                    <ArrowRightCircle size={25} />
-                  </button>
                   <input
                     ref={inputRef}
                     type="text"
                     placeholder="write your tokenId"
                     id="verifytext"
                   />
+                  <button onClick={OwnerOfcall}>
+                    Check the remaining usage
+                    <ArrowRightCircle size={25} />
+                  </button>
                   <button onClick={onVerify}>
                     Verify NFT Tricket <ArrowRightCircle size={25} />
+                  </button>
+                  <button onClick={tokenURICall}>
+                    View NFT tokenURI
+                    <ArrowRightCircle size={25} />
                   </button>
                 </div>
               )}
