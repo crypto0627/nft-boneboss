@@ -5,6 +5,11 @@
         "internalType": "string",
         "name": "customBaseURI_",
         "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "proxyRegistryAddress_",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -132,7 +137,39 @@
   },
   {
     "inputs": [],
+    "name": "MINT_LIMIT_PER_WALLET",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "PRICE",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "minter",
+        "type": "address"
+      }
+    ],
+    "name": "allowedMintCount",
     "outputs": [
       {
         "internalType": "uint256",
@@ -244,6 +281,25 @@
         "internalType": "string",
         "name": "",
         "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "nftused",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -399,11 +455,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
         "internalType": "string",
         "name": "tokenURI_",
         "type": "string"
@@ -463,6 +514,19 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "tokenVerify",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

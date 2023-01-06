@@ -21,3 +21,7 @@ typechain-types
 cache
 artifacts
 
+utils/abi.json
+test
+
+整理報告

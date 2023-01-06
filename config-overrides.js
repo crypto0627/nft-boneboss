@@ -13,8 +13,6 @@ module.exports = function override(config, env) {
     util: require.resolve("util/"),
     crypto: require.resolve("crypto-browserify"),
   };
-
   return config;
-  
 };
 

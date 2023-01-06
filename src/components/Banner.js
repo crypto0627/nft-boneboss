@@ -4,10 +4,7 @@ import headerImg from "../assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import {
-  mintNFT,
-  verifyNFT,
-} from "../utils/interact.js";
+import { mintNFT, verifyNFT, nftused } from "../utils/interact.js";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -57,26 +54,31 @@ export const Banner = () => {
 
   //mintNFT
   const [count, setcount] = useState("");
-  const [status, setStatus] = useState("");
   const onMint = async () => {
     setcount(1);
     const { status } = await mintNFT(count);
-    setStatus(status);
     console.log(status);
     alert(status);
   };
 
-  //verifyNFT
+  //verify nft 
   const inputRef = useRef(null);
   const [tokenId, setTokenId] = useState("");
   const onVerify = async () => {
     // 👇 "inputRef.current.value" is input value
     setTokenId(inputRef.current.value);
     const { status } = await verifyNFT(tokenId);
-    
-    setStatus(status);
     console.log(status);
+    alert(status);
   };
+
+  //nftused return(address)
+  const OwnerOfcall = async()=>{
+    setTokenId(inputRef.current.value);
+    const { status } = await nftused(tokenId);
+    console.log(status);
+    alert(status)
+  }
   return (
     <section className="banner" id="home">
       <Container>
@@ -95,9 +97,9 @@ export const Banner = () => {
                   <button onClick={onMint}>
                     Let’s Mint NFT! <ArrowRightCircle size={25} />
                   </button>
-
-                  <button onClick={onVerify}>
-                    Verify NFT Tricket <ArrowRightCircle size={25} />
+                  <button onClick={OwnerOfcall}>
+                    Watch what the times your token can be used.
+                    <ArrowRightCircle size={25} />
                   </button>
                   <input
                     ref={inputRef}
@@ -105,6 +107,9 @@ export const Banner = () => {
                     placeholder="write your tokenId"
                     id="verifytext"
                   />
+                  <button onClick={onVerify}>
+                    Verify NFT Tricket <ArrowRightCircle size={25} />
+                  </button>
                 </div>
               )}
             </TrackVisibility>

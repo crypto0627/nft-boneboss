@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Address.sol";
 
 contract OwnableDelegateProxy {}
 
@@ -42,13 +43,17 @@ contract boneboss is ERC721, ReentrancyGuard, Ownable {
 
   /** MINTING **/
 
-  uint256 public constant MAX_SUPPLY = 5000;
+  uint256 public constant MAX_SUPPLY = 100;
 
   uint256 public constant MAX_MULTIMINT = 100;
 
+  uint256 public constant PRICE = 20000000000000000;
+
   Counters.Counter private supplyCounter;
 
-  function mint(uint256 count) public nonReentrant {
+
+
+  function mint(uint256 count) public payable nonReentrant {
     require(saleIsActive, "Sale not active");
 
     if (allowedMintCount(msg.sender) >= count) {
@@ -61,11 +66,16 @@ contract boneboss is ERC721, ReentrancyGuard, Ownable {
 
     require(count <= MAX_MULTIMINT, "Mint at most 100 at a time");
 
+    require(
+      msg.value >= PRICE * count, "Insufficient payment, 0.02 ETH per item"
+    );
+
     for (uint256 i = 0; i < count; i++) {
       _mint(msg.sender, totalSupply());
 
       supplyCounter.increment();
     }
+    
   }
 
   function totalSupply() public view returns (uint256) {
@@ -84,13 +94,17 @@ contract boneboss is ERC721, ReentrancyGuard, Ownable {
 
   string private customBaseURI;
 
-  mapping(uint256 => string) private tokenURIMap;
+  mapping(uint256 => string) private tokenURIMap;//set (tokenId=>ipfs://pic)
+  mapping(uint256 => uint256) private tokencountMap;//set (tokenId=>10)
 
-  function setTokenURI(uint256 tokenId, string memory tokenURI_)
+  function setTokenURI(string memory tokenURI_)
     external
     onlyOwner
   {
-    tokenURIMap[tokenId] = tokenURI_;
+      for (uint256 i=0; i<MAX_SUPPLY;i++){
+        tokenURIMap[i] = tokenURI_;
+        tokencountMap[i]=10;
+      }
   }
 
   function setBaseURI(string memory customBaseURI_) external onlyOwner {
@@ -113,6 +127,14 @@ contract boneboss is ERC721, ReentrancyGuard, Ownable {
     return _baseURI();
   }
 
+  /** PAYOUT **/
+
+  function withdraw() public nonReentrant {
+    uint256 balance = address(this).balance;
+
+    Address.sendValue(payable(owner()), balance);
+  }
+
   /** PROXY REGISTRY **/
 
   address private immutable proxyRegistryAddress;
@@ -131,4 +153,24 @@ contract boneboss is ERC721, ReentrancyGuard, Ownable {
 
     return super.isApprovedForAll(owner, operator);
   }
+
+
+  /** Verify tokenId **/
+
+  function tokenVerify(uint256 tokenId) public
+      {
+        if(msg.sender == ownerOf(tokenId)){
+          if(tokencountMap[tokenId]<0){
+        }else{
+          tokencountMap[tokenId]-=1;
+        }
+        }
+        
+      }
+  
+  function nftused(uint256 tokenId) public view returns(uint256){
+    return  tokencountMap[tokenId];
+  }
 }
+
+//The code writed by JakeHong.

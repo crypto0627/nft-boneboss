@@ -1,0 +1,13 @@
+npm install hardhat
+
+//package
+@nomicfoundation/hardhat-toolbox
+
+//deploy contract on network
+npx hardhat run --network networkname 
+scripts/{deploy.js}
+
+//verify contract
+npx hardhat verify --network networkname contractAddress contractAruments
+for example:
+npx hardhat verify --network mumbai 0xa12d132e55f38733c2D91654D739781220559dbf "boneboss" "0x13d8caf1eabccbbd00d1e6d2dbb4dc4fecf2a022" (2 arguments because my contract have 2 arguments.)
