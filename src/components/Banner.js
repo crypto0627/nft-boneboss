@@ -67,17 +67,28 @@ export const Banner = () => {
   const onVerify = async () => {
     // 👇 "inputRef.current.value" is input value
     setTokenId(inputRef.current.value);
-    const { status } = await verifyNFT(tokenId);
-    console.log(status);
-    alert(status);
+    if (tokenId < 0 || tokenId > 100) {
+      console.log("Please input tokenId for the range 0~99.");
+      alert("Please input tokenId for the range 0~99.");
+    } else {
+      const { status } = await verifyNFT(tokenId);
+      console.log(status);
+      alert(status);
+    }
   };
 
   //nftused return(address)
   const OwnerOfcall = async()=>{
     setTokenId(inputRef.current.value);
-    const { status } = await nftused(tokenId);
-    console.log(status);
-    alert(status)
+    if(tokenId<0||tokenId>100){
+      console.log("Please input tokenId for the range 0~99.")
+      alert("Please input tokenId for the range 0~99.")
+    }else{
+      const { status } = await nftused(tokenId);
+      console.log(status);
+      alert(status);
+    }
+
   }
   return (
     <section className="banner" id="home">

@@ -20,8 +20,10 @@ typechain-types
 # Hardhat files
 cache
 artifacts
+hardhat.config.js
 
-utils/abi.json
+./src/utils/abi.json
 test
 
 整理報告
+
