@@ -10,10 +10,10 @@ typechain-types
 cache
 artifacts
 
-hardhat.config
-config-overrides
-hardhat_note
-src/utils/abi.json
+/hardhat.config
+/config-overrides
+/hardhat_note
+/src/utils/abi.json
 
 test
 
