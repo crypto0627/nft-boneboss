@@ -5,7 +5,7 @@ import contractABI from "./abi.json";
 const web3 = createAlchemyWeb3(
   "https://polygon-mumbai.g.alchemy.com/v2/xYH7CcRbAbWqETLkpqxIaa_WQfryrDIM"
 );
-const contractAddress = "0x10bC1e5Da124DF90F5D528DEc0fC7e6666e08013";
+const contractAddress = "0xB8ea8d146b880EEcd440477ecD83a1DD93F66b78";
 
 //call nftused function return(address)
 export const nftused = async(tokenId)=>{
