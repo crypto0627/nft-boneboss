@@ -80,33 +80,56 @@ export const verifyNFT = async(tokenId)=>{
 
   //load smart contract
   window.contract = await new web3.eth.Contract(contractABI, contractAddress); //loadContract();
-  //set up your Ethereum transaction
-  const transactionParameters = {
-    from: window.ethereum.selectedAddress, // must match user's active address.
-    to: contractAddress, // Required except during contract publications.
-    data: window.contract.methods.tokenVerify(tokenId).encodeABI(), //make call to NFT smart contract
-  };
-  //tokenId set count=10
-  try {
-    const txHash = await window.ethereum.request({
-      method: "eth_sendTransaction",
-      params: [transactionParameters],
+  try{
+    //check tokenId is wallet address container.
+    const ownerOfcall = await window.contract.methods.ownerOf(tokenId).call({ from: window.ethereum.selectedAddress })
+    const address = await window.ethereum.request({
+      method: "eth_accounts",
     });
-    return {
-      success: true,
-      status:
-        "✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" +
-        txHash,
-    };
-  } catch (err) {
+    console.log(ownerOfcall)
+    console.log(address[0]);
+
+      if (ownerOfcall.toLowerCase() === address[0]) { //compare address is match
+        //set up your Ethereum transaction
+        const transactionParameters = {
+          from: window.ethereum.selectedAddress, // must match user's active address.
+          to: contractAddress, // Required except during contract publications.
+          data: window.contract.methods.tokenVerify(tokenId).encodeABI(), //make call to NFT smart contract
+        };
+        //tokenId set count=10
+        try {
+          const txHash = await window.ethereum.request({
+            method: "eth_sendTransaction",
+            params: [transactionParameters],
+          });
+          return {
+            success: true,
+            status:
+              "✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" +
+              txHash,
+          };
+        } catch (err) {
+          return {
+            success: false,
+            status:
+              "😥 Something went wrong: " +
+              err.message +
+              "Please input tokenId in a textbox.",
+          };
+        }
+      } else {
+        return {
+          success: false,
+          status: "Your wallet havn't contain this tokenId.",
+        };
+      }
+  }catch(err){
     return {
       success: false,
-      status:
-        "😥 Something went wrong: " +
-        err.message +
-        "Please input tokenId in a textbox.",
+      status: "😥 Something went wrong: " + err.message,
     };
   }
+  
 }
 
 

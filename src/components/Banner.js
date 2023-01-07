@@ -77,7 +77,7 @@ export const Banner = () => {
     }
   };
 
-  //nftused return(address)
+  //nftused return(uint256)
   const OwnerOfcall = async()=>{
     setTokenId(inputRef.current.value);
     if (tokenId < 0 || tokenId > 100) {
