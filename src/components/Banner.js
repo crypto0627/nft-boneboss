@@ -131,7 +131,7 @@ export const Banner = () => {
                     <ArrowRightCircle size={25} />
                   </button>
                   <button onClick={onVerify}>
-                    Verify NFT Tricket <ArrowRightCircle size={25} />
+                    Verify NFT Ticket <ArrowRightCircle size={25} />
                   </button>
                   <button onClick={tokenURICall}>
                     View NFT tokenURI

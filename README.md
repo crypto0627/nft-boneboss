@@ -9,7 +9,7 @@
 1. 連結錢包:進入網頁後點擊畫面右上角的Connect按鈕連結您的Metamask錢包。
 2. Mint NFT:連結錢包後點擊畫面Let's Mint NFT!即可花費0.02 mumbai測試幣Mint NFT。
 3. 查詢NFT可驗證的次數:Mint NFT後點擊Check the remaining usage即可查詢您的NFT剩餘多少次驗證機會。
-4. 驗證NFT:點擊Verify NFT Tricket驗證您購買的NFT來入場NightClub。<br>
+4. 驗證NFT:點擊Verify NFT Ticket驗證您購買的NFT來入場NightClub。<br>
 
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/Banner.png)
 
