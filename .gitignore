@@ -1,0 +1,22 @@
+node_modules
+
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+
+/scripts
+/hardhat.config.js
+/config-overrides.js
+/hardhat_note.txt
+/src/utils/abi.json
+
+test
+
+整理報告
+
