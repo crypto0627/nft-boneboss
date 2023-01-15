@@ -63,6 +63,8 @@ remixd -s <你的專案資料夾絕對路徑> --remix-ide https://remix.ethereum
 7. 驗證完後複製abi.json檔到專案資料夾 /src/utils/abi.json
 8. 到ALCHEMY創建Mumbai測試網的WEB3 API，並複製API KEY到/src/utils/interact.js，複製合約地址到 /src/utils/interact.js 更改下圖的對應變數:
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/contract_change.png)
+改Donate位址
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/changedonate.png)
 9. 在PLOYSCAN你的合約寫入Token URI，如下圖所示:
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/setTokenURI.png.png)
 10. 在Github建立專案，並在此專案資料夾下執行
