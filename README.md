@@ -13,6 +13,18 @@
 
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/Banner.png)
 
+#### NFT Mint顯示的交易訊息:
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/mint.png)
+
+#### NFT Check:
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/check.png)
+
+#### NFT Verify:
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/verify.png)
+
+#### NFT TokenURI_watch.png:
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/TokenURI_watch.png)
+
 #### NFT Collections:
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/NFT_Collection.png)
 
@@ -21,6 +33,9 @@
 
 #### 查看公開的智能合約內容:
 [NFT 合約連結](https://mumbai.polygonscan.com/address/0xB8ea8d146b880EEcd440477ecD83a1DD93F66b78#writeContract)
+
+#### 比對TokenId:
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/TokenId.png)
 
 # 專案安裝步驟
 ----
