@@ -94,7 +94,7 @@ remixd -s <你的專案資料夾絕對路徑> --remix-ide https://remix.ethereum
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/contract_change.png)<br>
 改Donate位址
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/changedonate.png)<br>
-9. 在PLOYSCAN你的合約寫入Token URI，如下圖所示:
+9. 在PLOYSCAN你的合約寫入Token URI(記得點擊紅色的連結Owner錢包按鈕)，如下圖所示:
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/setTokenURI.png)
 10. 在Github建立專案，並在此專案資料夾下執行
 ```
