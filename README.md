@@ -46,66 +46,108 @@
 
 ### 下載專案
 1. 在Terminal執行
-```
-git clone https://github.com/crypto0627/nft-boneboss.git
-```
+    ```
+    git clone https://github.com/crypto0627/nft-boneboss.git
+    ```
 2. 開啟VS Code 在Terminal執行
-```
-npm install
-npm start
-```
+    ```
+    npm install
+    npm start
+    ```
 即可看到本地端網頁
 ### 智能合約
 1. 到PINATA上傳圖片，並創建Metadata.json檔貼上這串Opensea的格式<br>
-```{
-  "description": "Friendly OpenSea Creature that enjoys long swims in the ocean.", 
-  "external_url": "https://openseacreatures.io/3", 
-  "image": "你的IPFS圖片網址", 
-  "name": "Dave Starbelly",
-  "attributes": [ ... ]
-}
-```
+    ```{
+      "description": "Friendly OpenSea Creature that enjoys long swims in the ocean.", 
+      "external_url": "https://openseacreatures.io/3", 
+      "image": "你的IPFS圖片網址", 
+      "name": "Dave Starbelly",
+      "attributes": [ ... ]
+    }
+    ```
 2. 將Metadata.json檔上傳至PINATA
 3. 在Terminal執行
-```
-npm install -g @remix-project/remixd
-remixd -s <你的專案資料夾絕對路徑> --remix-ide https://remix.ethereum.org
-```
+    ```
+    npm install -g @remix-project/remixd
+    remixd -s <你的專案資料夾絕對路徑> --remix-ide https://remix.ethereum.org
+    ```
 4. 在Remix IDE點擊
+<br>
+
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/Remix_localhost.png)
+<br>
+
 5. 編譯Boneboss.sol並選擇MetaMask部署環境(MetaMask錢包記得改成Mumbai測試網)，記得deploy變數要打"boneboss" "你的錢包地址"
+<br>
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/remix_deploy.png)
+<br>
+
 6. 在Remix安裝插件FLATTENER，使用FLATTENER驗證合約，並依照POLYSCAN上指示操作驗證。
+<br>
+
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/polygon_verify.png)
-![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/save_flatten.png)<br>
+<br>
+
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/save_flatten.png)
+<br>
+
 複製所有代碼
-![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/copy_verify.png)<br>
+<br>
+
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/copy_verify.png)
+<br>
+
 貼上代碼並在第一行加上
 ```
 // SPDX-License-Identifier: MIT
 ```
 之後點擊驗證，即可完成驗證合約。
+
 7. 驗證完後複製abi.json檔到專案資料夾 /src/utils/abi.json
+<br>
+
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/abi_copy.png)
+<br>
+
 8. 到ALCHEMY創建Mumbai測試網的WEB3 API，並複製API KEY到/src/utils/interact.js，複製合約地址到 /src/utils/interact.js 更改下圖的對應變數:
-![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/alchemy_key.png)<br>
-點擊view key並複製HTTPS的API網址。<br>
+<br>
+
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/alchemy_key.png)
+<br>
+
+點擊view key並複製HTTPS的API網址。
+<br>
+
 更改變數
-![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/contract_change.png)<br>
+<br>
+
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/contract_change.png)
+<br>
+
 改Donate位址
-![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/changedonate.png)<br>
+<br>
+
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/changedonate.png)
+<br>
+
 9. 在PLOYSCAN你的合約寫入Token URI(記得點擊紅色的連結Owner錢包按鈕)，如下圖所示:
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/setTokenURI.png)
+<br>
+
 10. 在Github建立專案，並在此專案資料夾下執行
-```
-git init
-git commit -m "first commit"
-git branch -M main
-git remote add origin 你Gihub專案的.git網址
-git push -u origin main
-```
+    ```
+    git init
+    git commit -m "first commit"
+    git branch -M main
+    git remote add origin 你Gihub專案的.git網址
+    git push -u origin main
+    ```
 11. 更改package.json的homepage改成你的Github專案網址
+<br>
+
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/githomepage.png)
+<br>
+
 新增
 ```
     "scripts": {
@@ -122,6 +164,12 @@ git push -u origin main
 npm run deploy
 ```
 12. 到此處更改分支
+<br>
+
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/githubpage.png)
+<br>
+
 13. 完成專案部署
+<br>
+
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/complete.png)
