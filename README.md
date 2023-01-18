@@ -1,4 +1,4 @@
-# Polygon NFT Trickets Project
+# Polygon NFT Tickets Project
 入場Bone NightNlub驗證網站
 ----
 ### [NFT 網站連結](https://crypto0627.github.io/nft-boneboss/)
