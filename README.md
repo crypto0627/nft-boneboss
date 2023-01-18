@@ -73,10 +73,23 @@ remixd -s <你的專案資料夾絕對路徑> --remix-ide https://remix.ethereum
 ```
 4. 在Remix IDE點擊
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/Remix_localhost.png)
-5. 編譯Boneboss.sol並選擇MetaMask部署環境(MetaMask錢包記得改成Mumbai測試網)。
+5. 編譯Boneboss.sol並選擇MetaMask部署環境(MetaMask錢包記得改成Mumbai測試網)，記得deploy變數要打"boneboss" "你的錢包地址"
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/remix_deploy.png)
 6. 在Remix安裝插件FLATTENER，使用FLATTENER驗證合約，並依照POLYSCAN上指示操作驗證。
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/polygon_verify.png)
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/save_flatten.png)<br>
+複製所有代碼
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/copy_verify.png)<br>
+貼上代碼並在第一行加上
+```
+// SPDX-License-Identifier: MIT
+```
+之後點擊驗證，即可完成驗證合約。
 7. 驗證完後複製abi.json檔到專案資料夾 /src/utils/abi.json
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/abi_copy.png)
 8. 到ALCHEMY創建Mumbai測試網的WEB3 API，並複製API KEY到/src/utils/interact.js，複製合約地址到 /src/utils/interact.js 更改下圖的對應變數:
+![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/alchemy_key.png)<br>
+點擊view key並複製HTTPS的API網址。
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/contract_change.png)
 改Donate位址
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/changedonate.png)
