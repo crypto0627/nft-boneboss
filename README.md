@@ -92,8 +92,22 @@ git push -u origin main
 ```
 11. 更改package.json的homepage改成你的Github專案網址
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/githomepage.png)
+新增
+```
+    "scripts": {
+        "start": "cross-env GENERATE_SOURCEMAP=false react-app-rewired start",
+        "build": "react-app-rewired build",
+        "test": "react-app-rewired test",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+    },
+```
+執行
+```
+npm run deploy
+```
 12. 到此處更改分支
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/githubpage.png)
-13. 將所有檔案都部署到Github專案後執行npm run deploy
-14. 完成專案部署
+13. 完成專案部署
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/complete.png)
