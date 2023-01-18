@@ -12,7 +12,6 @@ artifacts
 
 /scripts
 /hardhat.config.js
-/config-overrides.js
 /hardhat_note.txt
 /src/utils/abi.json
 
