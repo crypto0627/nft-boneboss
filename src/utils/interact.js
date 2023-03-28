@@ -5,7 +5,7 @@ import contractABI from "./abi.json";
 const web3 = createAlchemyWeb3(
   "https://polygon-mumbai.g.alchemy.com/v2/xYH7CcRbAbWqETLkpqxIaa_WQfryrDIM"
 );
-const contractAddress = "0xB8ea8d146b880EEcd440477ecD83a1DD93F66b78";
+const contractAddress = "0x3Caa2c8d641c1FC7d632fc01411E690cD12ab592";
 
 //call tokenURI 
 export const tokenURI = async(tokenId)=>{
@@ -150,7 +150,7 @@ export const mintNFT = async (count) => {
     from: window.ethereum.selectedAddress, // must match user's active address.
     to: contractAddress, // Required except during contract publications.
     data: window.contract.methods.mint(1).encodeABI(), //make call to NFT smart contract
-    value: Number(20000000000000000).toString(16),
+    value: Number(31000000000000000).toString(16),
   };
 
   //sign transaction via Metamask
