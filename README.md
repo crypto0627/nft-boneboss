@@ -79,6 +79,7 @@
 
 5. 編譯Boneboss.sol並選擇MetaMask部署環境(MetaMask錢包記得改成Mumbai測試網)，記得deploy變數要打"boneboss" "你的錢包地址"
 <br>
+
 ![image](https://github.com/crypto0627/nft-boneboss/blob/main/result_pic/remix_deploy.png)
 <br>
 
